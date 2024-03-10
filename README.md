@@ -1,7 +1,5 @@
 # Marco's Personal Website
 
----
-
 ## Table of Contents
 
 - [Introduction](#introduction)
