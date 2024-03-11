@@ -17,7 +17,7 @@ export default function RootLayout({ children }) {
       <SpeedInsights />
       <body
         className={
-          inter.className + " text-black bg-white dark:text-white dark:bg-black"
+          inter.className + " min-h-screen text-foreground bg-background"
         }
       >
         <ThemeProvider attribute="class">{children}</ThemeProvider>
