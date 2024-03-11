@@ -10,8 +10,11 @@ import {
   PiPencilSimpleFill,
   PiBookmarks,
   PiBookmarksFill,
+  PiMoon,
+  PiSun,
 } from "react-icons/pi";
 import { usePathname } from "next/navigation";
+import { useTheme } from "next-themes";
 
 export default function NavigationBar() {
   const icon_className = "w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7";
@@ -45,6 +48,11 @@ export default function NavigationBar() {
         url="/bookmarks"
         text="Bookmarks"
       />
+      <Divider />
+      <ThemeButton
+        light_icon={<PiMoon className={icon_className} />}
+        dark_icon={<PiSun className={icon_className} />}
+      />
     </div>
   );
 }
@@ -61,6 +69,34 @@ function Button({ icon, selected_icon, url, text }) {
         {text}
       </span>
     </Link>
+  );
+}
+
+function ThemeButton({ light_icon, dark_icon }) {
+  const { theme, setTheme } = useTheme();
+
+  return (
+    <>
+      {theme === "light" ? (
+        <button onClick={() => setTheme("dark")} className="group">
+          <div className="text-foreground/80 md:hover:text-foreground-light/90 cursor-pointer">
+            {light_icon}
+          </div>
+          <span className="absolute px-3 py-1.5 mb-2 md:mb-4 bottom-10 left-0 right-0 mx-auto max-w-fit rounded-md shadow-md bg-foreground-light/[0.1] bg-opacity-25 text-xs font-medium transition-all duration-100 scale-0 origin-bottom md:group-hover:scale-100">
+            {theme === "light" ? "Dark Mode" : "Light Mode"}
+          </span>
+        </button>
+      ) : (
+        <button onClick={() => setTheme("light")} className="group">
+          <div className="text-foreground/80 md:hover:text-foreground-light/90 cursor-pointer">
+            {dark_icon}
+          </div>
+          <span className="absolute px-3 py-1.5 mb-2 md:mb-4 bottom-10 left-0 right-0 mx-auto max-w-fit rounded-md shadow-md bg-foreground-light/[0.1] bg-opacity-25 text-xs font-medium transition-all duration-100 scale-0 origin-bottom md:group-hover:scale-100">
+            {theme === "light" ? "Dark Mode" : "Light Mode"}
+          </span>
+        </button>
+      )}
+    </>
   );
 }
 
