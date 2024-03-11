@@ -6,13 +6,15 @@ import {
   PiHouseFill,
   PiCards,
   PiCardsFill,
+  PiPencilSimple,
+  PiPencilSimpleFill,
   PiBookmarks,
   PiBookmarksFill,
 } from "react-icons/pi";
 import { usePathname } from "next/navigation";
 
 export default function NavigationBar() {
-  const icon_className = "w-5 h-5 md:w-6 md:h-6";
+  const icon_className = "w-6 h-6 md:w-7 md:h-7";
 
   return (
     <div className="flex max-w-fit fixed bottom-5 md:bottom-10 inset-x-0 mx-auto border border-black/[0.2] dark:border-white/[0.2] rounded-full z-[1000] px-4 py-2 items-center justify-center space-x-2.5">
@@ -31,10 +33,17 @@ export default function NavigationBar() {
       />
       <Divider />
       <Button
-        icon={<PiBookmarks className={icon_className} />}
-        selected_icon={<PiBookmarksFill className={icon_className} />}
+        icon={<PiPencilSimple className={icon_className} />}
+        selected_icon={<PiPencilSimpleFill className={icon_className} />}
         url="/blog"
         text="Blog"
+      />
+      <Divider />
+      <Button
+        icon={<PiBookmarks className={icon_className} />}
+        selected_icon={<PiBookmarksFill className={icon_className} />}
+        url="/bookmarks"
+        text="Bookmarks"
       />
     </div>
   );
